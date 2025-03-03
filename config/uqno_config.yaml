@@ -48,7 +48,7 @@ default: &DEFAULT
     alpha: 0.9
     delta: 0.95
     solution:
-      n_epochs: 1 #300
+      n_epochs: 300 #300
       resume: False
       learning_rate: 5e-3
       training_loss: 'h1'
@@ -75,7 +75,7 @@ default: &DEFAULT
 
   # Dataset related
   data:
-    root: '..neuralop/data/datasets/data'
+    root: YOUR_ROOT
     batch_size: 4
     n_train_total: 4000
     n_train_solution: 2500
@@ -94,7 +94,7 @@ default: &DEFAULT
     name: train-uqno # If None, config will be used but you can override it here
     group: '' 
     project: "uqno-darcy"
-    entity: "jgao3-california-institute-of-technology-caltech" # put your username here
+    entity: "YOUR_NAME" # put your username here
     sweep: False
     log_output: True
     eval_interval: 1

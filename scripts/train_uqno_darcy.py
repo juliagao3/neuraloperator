@@ -22,10 +22,10 @@ config_name = "default"
 pipe = ConfigPipeline(
     [
         YamlConfig(
-            "./uqno_config.yaml", config_name="default", config_folder="../neuraloperator/config"
+            "./uqno_config.yaml", config_name="default", config_folder="../config"
         ),
         ArgparseConfig(infer_types=True, config_name=None, config_file=None),
-        YamlConfig(config_folder="../neuraloperator/config"),
+        YamlConfig(config_folder="../config"),
     ]
 )
 config = pipe.read_conf()
@@ -185,7 +185,7 @@ if is_logger:
 
 
 solution_train_loader = DataLoader(solution_train_db,
-                                    batch_size=config.data.batch_size,
+                                batch_size=config.data.batch_size,
                                     shuffle=True,
                                     num_workers=1,
                                     pin_memory=True,
@@ -197,7 +197,7 @@ trainer = Trainer(
     n_epochs=config.opt.solution.n_epochs,
     device=device,
     data_processor=data_processor,
-    #amp_autocast=config.opt.solution.amp_autocast,
+    amp_autocast=config.opt.solution.amp_autocast,
     wandb_log=config.wandb.log,
     eval_interval=config.wandb.eval_interval,
     log_output=config.wandb.log_output,
